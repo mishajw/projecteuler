@@ -26,7 +26,14 @@ def run_cpp(path: str, problem: int) -> None:
     if not os.path.isdir("bin"):
         os.mkdir("bin")
     output_path = f"./bin/p{problem:03}"
-    build_command = subprocess.run(["clang++", "-std=c++17", "-O3", "-g", "-o", output_path, path])
+    build_command = subprocess.run([
+        "clang++",
+        "-std=c++17",
+        "-O3",
+        "-g",
+        "-o", output_path,
+        "src/peutil.cpp",
+        path])
     assert build_command.returncode == 0, "Build failed"
     subprocess.run([output_path])
 
