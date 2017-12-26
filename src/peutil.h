@@ -24,6 +24,21 @@ void make_prime_sieve(std::vector<bool> &prime_sieve, T size) {
 
 int get_num_digits(int i);
 
+template<typename T>
+T get_highest_common_factor(const T a, const T b) {
+  if (a == 0) {
+    return b;
+  }
+  if (b == 0) {
+    return a;
+  }
+
+  const T quotient = a / b;
+  const T remainder = a % b;
+
+  return get_highest_common_factor<T>(b, remainder);
+}
+
 }
 
 #endif
