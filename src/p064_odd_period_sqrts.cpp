@@ -65,12 +65,12 @@ int get_period_length(int x) {
     int current_unit_part = std::floor(equation.evaluate());
     // printf("%d + 1 / (", current_unit_part);
     
-    printf("%d,", current_unit_part);
-
     if (i != 0 && equation == initial_equation) {
       period = i;
       break;
     }
+
+    printf("%d,", current_unit_part);
 
     equation = equation.extract(current_unit_part);
     equation = equation.normalized();
