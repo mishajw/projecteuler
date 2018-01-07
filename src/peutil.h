@@ -2,6 +2,7 @@
 #define PEUTIL_H_
 
 #include <vector>
+#include <cmath>
 
 namespace peutil {
 
@@ -22,9 +23,19 @@ void make_prime_sieve(std::vector<bool> &prime_sieve, T size) {
   }
 }
 
-int get_num_digits(int i);
+template<int base=10>
+int get_num_digits(int i) {
+  if (i == 0) {
+    return 1;
+  }
 
-int get_digit(int i, int n);
+  return std::floor(std::log(i) / std::log(base) + 1);
+}
+
+template<int base=10>
+int get_digit(int i, int n) {
+  return i % int(std::pow(base, n + 1)) / std::pow(base, n);
+}
 
 template<typename T>
 T get_highest_common_factor(const T a, const T b) {

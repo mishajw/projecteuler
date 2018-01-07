@@ -32,7 +32,6 @@ def run_cpp(path: str, problem: int) -> None:
         "-O3",
         "-g",
         "-o", output_path,
-        "src/peutil.cpp",
         path])
     assert build_command.returncode == 0, "Build failed"
 
