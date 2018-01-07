@@ -35,7 +35,9 @@ def run_cpp(path: str, problem: int) -> None:
         "src/peutil.cpp",
         path])
     assert build_command.returncode == 0, "Build failed"
-    subprocess.run([output_path])
+
+    run_command = subprocess.run([output_path])
+    assert run_command.returncode == 0, f"Run Failed with exit code {run_command.returncode}"
 
 
 def run_py(path: str) -> None:
